@@ -1,11 +1,11 @@
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'RxKeyboardExample' do
   use_frameworks!
 
   pod 'RxKeyboard', :path => '../'
   pod 'Then'
-  pod 'UITextView+Placeholder'
+  pod 'UITextView+Placeholder', '~> 1.4.0'
   pod 'ReusableKit'
   pod 'SnapKit'
   pod 'ManualLayout'

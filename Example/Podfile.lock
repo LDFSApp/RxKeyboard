@@ -17,7 +17,7 @@ PODS:
   - SwiftyColor (1.2.0)
   - SwiftyImage (1.5.0)
   - Then (2.4.0)
-  - "UITextView+Placeholder (1.2.1)"
+  - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
   - CGFloatLiteral
@@ -28,10 +28,10 @@ DEPENDENCIES:
   - SwiftyColor
   - SwiftyImage
   - Then
-  - "UITextView+Placeholder"
+  - "UITextView+Placeholder (~> 1.4.0)"
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - CGFloatLiteral
     - ManualLayout
     - ReusableKit
@@ -53,15 +53,15 @@ SPEC CHECKSUMS:
   ManualLayout: 68ac8cfa6b5f656f7a9fadec3730208b95986880
   ReusableKit: d0b040de03b293288b0ca27a78602691d3346d9b
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
-  RxKeyboard: 6683c4344304a00f943c158bd8a43ce5469c82a7
+  RxKeyboard: 4d414c5d6e0d7bbd7ae2f96fe22b5e75b707c2e9
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwiftyColor: ac23e6c0b561838c1ef0f554ff170cceba14546b
   SwiftyImage: b4f0523c4a775c79c45dd328f42ed9b3111d5898
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
-  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 217b0b1c7b2faddc54272a5bde63843c54f48190
+PODFILE CHECKSUM: ad095fe888c85ecf98dc1fbc1c221b5caad15187
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.11.3

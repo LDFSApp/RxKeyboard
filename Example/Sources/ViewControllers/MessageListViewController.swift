@@ -89,25 +89,31 @@ class MessageListViewController: UIViewController {
       self.collectionView.scrollToItem(at: indexPath, at: [], animated: true)
     }
 
-    RxKeyboard.instance.visibleHeight
-      .drive(onNext: { [weak self] keyboardVisibleHeight in
-        guard let `self` = self, self.didSetupViewConstraints else { return }
-        self.messageInputBar.snp.updateConstraints { make in
-          if #available(iOS 11.0, *) {
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardVisibleHeight)
-          } else {
-            make.bottom.equalTo(self.bottomLayoutGuide.snp.top).offset(-keyboardVisibleHeight)
-          }
-        }
-        self.view.setNeedsLayout()
-        UIView.animate(withDuration: 0) {
-          self.collectionView.contentInset.bottom = keyboardVisibleHeight + self.messageInputBar.height
-          self.collectionView.scrollIndicatorInsets.bottom = self.collectionView.contentInset.bottom
-          self.view.layoutIfNeeded()
-        }
-      })
-      .disposed(by: self.disposeBag)
-
+      RxKeyboard.instance.visibleHeight
+            .drive(onNext: { [weak self] keyboardVisibleHeight in
+              guard let `self` = self, self.didSetupViewConstraints else { return }
+              self.messageInputBar.snp.remakeConstraints { make in
+                  make.left.right.equalTo(0)
+                if #available(iOS 11.0, *) {
+                    if keyboardVisibleHeight == 0 {
+                        make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardVisibleHeight)
+                    }
+                    else {
+                        make.bottom.equalTo(self.view.snp.bottom).offset(-keyboardVisibleHeight)
+                    }
+                  
+                } else {
+                  make.bottom.equalTo(self.bottomLayoutGuide.snp.top).offset(-keyboardVisibleHeight)
+                }
+              }
+              self.view.setNeedsLayout()
+              UIView.animate(withDuration: 0) {
+                self.collectionView.contentInset.bottom = keyboardVisibleHeight + self.messageInputBar.height
+                self.collectionView.scrollIndicatorInsets.bottom = self.collectionView.contentInset.bottom
+                self.view.layoutIfNeeded()
+              }
+            })
+            .disposed(by: self.disposeBag)
     RxKeyboard.instance.willShowVisibleHeight
       .drive(onNext: { keyboardVisibleHeight in
         self.collectionView.contentOffset.y += keyboardVisibleHeight
