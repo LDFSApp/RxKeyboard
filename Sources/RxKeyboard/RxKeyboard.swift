@@ -131,6 +131,7 @@ public class RxKeyboard: NSObject, RxKeyboardType {
 
     // gesture recognizer
     self.panRecognizer.delegate = self
+    self.panRecognizer.maximumNumberOfTouches = 1
     NotificationCenter.default.rx.notification(applicationDidFinishLaunching)
       .map { _ in Void() }
       .startWith(Void()) // when RxKeyboard is initialized before UIApplication.window is created
